@@ -1,4 +1,5 @@
 {% from "nginx/map.jinja" import nginx with context %}
+{% do nginx.update(pillar.get('nginx', {})) -%}
 {% set use_upstart = pillar.get('nginx', {}).get('use_upstart', true) %}
 {% if use_upstart %}
 nginx-old-init:
